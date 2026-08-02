@@ -1,12 +1,12 @@
-# Code for "Triglycerides and Skeletal Muscle: Resolving the Body Mass Confound through Relative Muscle Indices and Multivariable Mendelian Randomization"
+# Code for "Triglycerides and skeletal muscle: resolving the body mass confound through relative muscle indices and multivariable Mendelian randomization"
 
 This repository contains the analytical R scripts used in the three-stage study by Chen, Tang, and Zhang.
 
 ## Overview
 
-- **Stage 1** (`stage1_metabolomics.R`): Untargeted metabolomics analysis of murine disuse atrophy (Metabolomics Workbench ST003803). Includes data cleaning, PCA, PLS‑DA, VIP selection, and univariate validation.
-- **Stage 2** (`stage2_nhanes.R`): Population‑based cohort analysis using NHANES 2011–2018. Constructs grip strength and DXA cohorts, computes relative muscle indices, and runs multivariable regression with sensitivity analyses.
-- **Stage 3** (`stage3_mr.R`): Univariable and multivariable Mendelian randomization using GWAS summary statistics from IEU OpenGWAS (TG ieu‑b‑111, BMI ieu‑b‑40, grip strength ieu‑b‑39). Includes bidirectional MR and conditional F‑statistics.
+- **Stage 1** (`stage1_metabolomics.R`): Untargeted metabolomics analysis of murine disuse atrophy (Metabolomics Workbench ST003803).
+- **Stage 2** (`stage2_nhanes.R`): Population‑based cohort analysis using NHANES 2011–2018.
+- **Stage 3** (`stage3_mr.R`): Univariable and multivariable Mendelian randomization.
 
 ## Requirements
 
@@ -25,11 +25,9 @@ All datasets are publicly available:
 - NHANES: [CDC NHANES](https://wwwn.cdc.gov/nchs/nhanes/)
 - GWAS: [IEU OpenGWAS](https://gwas.mrcieu.ac.uk/)
 
-## Citation
+## Current Submission
 
-If you use this code, please cite:
-
-Chen Y, Tang B, Zhang J. Triglycerides and Skeletal Muscle: Resolving the Body Mass Confound through Relative Muscle Indices and Multivariable Mendelian Randomization. *Disability and Rehabilitation*. 2025. DOI: [待补充]
+This manuscript is currently under review at **PLOS ONE**.
 
 ## License
 
