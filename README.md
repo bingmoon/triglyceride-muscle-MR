@@ -1,13 +1,13 @@
 
 
-```markdown
+
 # Code for "Triglycerides and Skeletal Muscle: Resolving the Body Mass Confound through Relative Muscle Indices and Mendelian Randomization"
 
 This repository contains the complete analytical R scripts for the three‑stage study by Chen, Tang, and Zhang.
 
 ## Repository structure
 
-```
+
 ├── README.md
 ├── LICENSE
 ├── stage1_metabolomics.R
