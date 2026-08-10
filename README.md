@@ -1,9 +1,7 @@
 
-
-
 # Code for "Triglycerides and Skeletal Muscle: Resolving the Body Mass Confound through Relative Muscle Indices and Mendelian Randomization"
 
-This repository contains the complete analytical R scripts for the three‑stage study by Chen, Tang, and Zhang.
+This repository contains the complete analytical R scripts and the metabolomics dataset for the three‑stage study by Chen, Tang, and Zhang.
 
 ## Repository structure
 
@@ -12,12 +10,13 @@ This repository contains the complete analytical R scripts for the three‑stage
 ├── LICENSE
 ├── stage1_metabolomics.R
 ├── stage2_nhanes.R
-└── stage3_mr.R
+├── stage3_mr.R
+└── MSdata_ST003803_1.txt
 ```
 
 ## Stage overview
 
-- **Stage 1** (`stage1_metabolomics.R`): Untargeted metabolomics of murine disuse atrophy (Metabolomics Workbench ST003803).
+- **Stage 1** (`stage1_metabolomics.R`): Untargeted metabolomics of murine disuse atrophy (Metabolomics Workbench ST003803). The script reads `MSdata_ST003803_1.txt` as input.
 - **Stage 2** (`stage2_nhanes.R`): Population‑based cross‑sectional analysis of NHANES 2011–2018.
 - **Stage 3** (`stage3_mr.R`): Univariable and multivariable Mendelian randomization of triglycerides on grip strength, including instrument selection, PhenoScanner‑based confounder screening, sensitivity analyses, and biological annotation.
 
@@ -45,7 +44,8 @@ install.packages(c("nhanesA", "ggplot2", "ggpubr", "broom", "dplyr", "tidyr", "g
 
 1. Clone or download the repository.
 2. Set the working directory to the repository root.
-3. Run the scripts in order:
+3. Ensure `MSdata_ST003803_1.txt` is in the root folder.
+4. Run the scripts in order:
    ```r
    source("stage1_metabolomics.R")
    source("stage2_nhanes.R")
@@ -55,11 +55,9 @@ Output figures (PDF) and tables (CSV) are saved in the working directory.
 
 ## Data availability
 
-All datasets are publicly accessible:
-
 | Data | Source |
 |------|--------|
-| Metabolomics | [Metabolomics Workbench ST003803](https://doi.org/10.21228/M8S3803) |
+| Metabolomics dataset | `MSdata_ST003803_1.txt` (included in this repository; originally from [Metabolomics Workbench ST003803](https://doi.org/10.21228/M8S3803)) |
 | NHANES 2011–2018 | [CDC NHANES](https://wwwn.cdc.gov/nchs/nhanes/) |
 | GWAS summary statistics | [IEU OpenGWAS](https://gwas.mrcieu.ac.uk/) |
 | · Triglycerides | `ieu-b-111` |
