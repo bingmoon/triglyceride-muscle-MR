@@ -88,6 +88,8 @@ sed -i    's#/Users/bing/MSM*#/你的/仓库/路径#g'  code/*.R      # GNU sed
 
 同时确保仓库根下存在脚本期望的输出目录：`results/`（脚本多数带 `dir.create("results", showWarnings = FALSE)`）。
 
+> 🚧 **known limitation**：上述硬编码路径**尚未参数化**（未改为 `here::here()` / 相对路径）。在其修复前，本仓库的定位是**可审计的代码归档**（每行代码可追溯，见 §3 与 `docs/code_archive_provenance.*`），而非开箱即跑的复现包。
+
 ### 4.2 未固定 / 需注意的随机性与版本漂移
 
 | 项 | 说明 |
@@ -147,7 +149,7 @@ Analysis outputs (tables and figures) are available in the manuscript's suppleme
 
 | # | 阶段 | 指标 | 期望值 | 出处（补充材料） |
 |---|---|---|---|---|
-| 1 | 一 | 握力队列样本量 | **n = 4,180**（G 2,017 / H 2,163） | `Stage2_Results_Summary.txt` |
+| 1 | 一 | 握力队列样本量 | **n = 4,180**（G 2,017 / H 2,163） | `Stage2_Results_Summary.txt`（⚠️ 该文件名为**旧三阶段命名**遗留：旧 Stage 2 = NHANES 层，现对应 `stage1`；补充材料文件名未改，以遵守「不改补充材料」约束） |
 | 2 | 一 | 相对握力 ~ Log2_TG（未加权 lm） | β = −0.05064, P = 5.168e−33, R² = 0.3899 | `Stage2_Results_Summary.txt` |
 | 3 | 一 | DXA 队列样本量 | **n = 4,644**（四周期） | `Stage2_Results_Summary.txt` |
 | 4 | 一 | 相对 ASM ~ Log2_TG（未加权 lm） | β = −0.01177, P = 8.328e−106, R² = 0.6331 | `Stage2_Results_Summary.txt` |
@@ -176,6 +178,8 @@ Analysis outputs (tables and figures) are available in the manuscript's suppleme
 **已知的不可完全复现项**（诚实披露）：
 
 1. **`07` MR-PRESSO** 的离群 SNP 集合对 `NbDistribution` 敏感，重复运行可能有 ±1 个 SNP 的抖动。
+2. **硬编码绝对路径（known limitation）**：脚本以原作者机器路径写死工作目录（共 19 处、分布于 9 个脚本，详见 §4.1）。**本仓库不保证「开箱即跑（out-of-the-box reproduction）」**——运行前必须先按 §4.1 替换路径，否则脚本会在拉数/写盘阶段失败。
+3. **补充材料文件名沿用旧三阶段命名**：如 `Stage2_Results_Summary.txt`（旧 Stage 2 = 现 `stage1` NHANES 层）。文件内容与正文两阶段体系一致，仅文件名未改（遵守「不改补充材料」约束）。
 
 ---
 
