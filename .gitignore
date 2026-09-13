@@ -1,0 +1,55 @@
+# .gitignore — triglyceride-muscle-MR (research code release)
+# 目的：挡住凭证面 / 环境快照 / 备份链 / 编译产物。
+# ⚠️ 注意：本项目 data/derived/ 下的 *.rds 是**交付物**（小体积派生物，供读者免重跑），
+#    因此**故意不写** `*.rds` 规则。若日后要加，务必配 `!data/derived/*.rds` 白名单，
+#    否则会静默丢掉交付数据。
+
+# --- 凭证 / 环境（最高优先级，绝对不得入库）---
+.Renviron
+.Rprofile
+.Rhistory
+.Rapp.history
+*token*
+*.jwt
+.netrc
+.git-credentials
+
+# --- R 环境快照（⚠️ 必须用 *. 前缀：裸名 `.RData` 只匹配恰好叫该名的文件）---
+*.RData
+*.RDate
+.RDataTmp
+*.RDataTmp
+
+# --- 备份链 / 中间代际 ---
+*_backup_*
+*_backup
+*_pre_*
+archive_backups_*/
+backup_figures_*/
+*.bak
+*.bak[0-9]
+
+# --- LaTeX 编译产物（.bbl 是投稿必需件，故意不忽略）---
+*.aux
+*.log
+*.out
+*.blg
+*.spl
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# --- 系统 / 编辑器 ---
+.DS_Store
+Thumbs.db
+.venv/
+__pycache__/
+*.pyc
+.Rproj.user/
+
+# --- 本仓库不承载稿件（manuscript 单独管理）---
+manuscript/
+
+# --- 分析产物：表 / 图不随仓库发布（见 README §6）---
+results/tables/
+results/figures/
