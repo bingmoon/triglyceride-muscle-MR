@@ -4,15 +4,7 @@
   "extracted_utc": "2026-09-13",
   "code_files": [
     {
-      "file": "01_stage1_metabolomics.R",
-      "block": 1,
-      "md_lines": "L30-280",
-      "body_md5": "cbd3820621894d235fbef2a3ef7466be",
-      "nlines": 249,
-      "bytes": 9531
-    },
-    {
-      "file": "02_stage2_nhanes.R",
+      "file": "01_stage1_nhanes.R",
       "block": 2,
       "md_lines": "L283-724",
       "body_md5": "a0d5e255a764533d43924eb4e67df30b",
@@ -20,7 +12,7 @@
       "bytes": 18996
     },
     {
-      "file": "03_stage3_mr.R",
+      "file": "02_stage2_mr.R",
       "block": 3,
       "md_lines": "L726-1279",
       "body_md5": "f639b74280b49017cc8482f286fa8a02",
@@ -28,7 +20,7 @@
       "bytes": 19852
     },
     {
-      "file": "04_stage3_mr_ukb_grip.R",
+      "file": "03_stage2_mr_ukb_grip.R",
       "block": 4,
       "md_lines": "L1282-1557",
       "body_md5": "4b91075e6aa8b360fbe0be1949c7dcb6",
@@ -36,7 +28,7 @@
       "bytes": 12152
     },
     {
-      "file": "05_supplementary_analyses.R",
+      "file": "04_supplementary_analyses.R",
       "block": 5,
       "md_lines": "L1559-1655",
       "body_md5": "5397d7e07d29e8b3d2eed6361becd4af",
@@ -44,7 +36,7 @@
       "bytes": 3955
     },
     {
-      "file": "06_stage2_nhanes_weighted_FIXED.R",
+      "file": "05_stage1_nhanes_weighted_FIXED.R",
       "block": 6,
       "md_lines": "L1665-1768",
       "body_md5": "acbfe5ea8f07d443dde657cd21b296ec",
@@ -52,7 +44,7 @@
       "bytes": 5143
     },
     {
-      "file": "07_power_analysis.R",
+      "file": "06_power_analysis.R",
       "block": 7,
       "md_lines": "L1772-1842",
       "body_md5": "191d382e680bd67f083eec45e29e4cb7",
@@ -60,7 +52,7 @@
       "bytes": 3306
     },
     {
-      "file": "08_mr_presso_bidirectional.R",
+      "file": "07_mr_presso_bidirectional.R",
       "block": 8,
       "md_lines": "L1846-1949",
       "body_md5": "28e25760139af53ac59f4ba3a9d28c37",
@@ -68,7 +60,7 @@
       "bytes": 4618
     },
     {
-      "file": "09_abs_grip_bmi_weighted.R",
+      "file": "08_abs_grip_bmi_weighted.R",
       "block": 9,
       "md_lines": "L1967-2146",
       "body_md5": "8cf2f6253500a195a01d7511a20a82cc",
@@ -76,7 +68,7 @@
       "bytes": 6110
     },
     {
-      "file": "10_wtsaf2yr_sensitivity.R",
+      "file": "09_wtsaf2yr_sensitivity.R",
       "block": 10,
       "md_lines": "L2170-2303",
       "body_md5": "045a06985014fa38b61c94d45f183a96",
@@ -84,7 +76,7 @@
       "bytes": 5418
     },
     {
-      "file": "11_wtsaf2yr_sensitivity_trueN.R",
+      "file": "10_wtsaf2yr_sensitivity_trueN.R",
       "block": "standalone",
       "md_lines": "/Users/bing/MS/results/WTSAF2YR_sensitivity_trueN.R (verbatim copy)",
       "body_md5": "a591abe2ee04cbab3af5b6b04ab0bc6c",
@@ -93,11 +85,6 @@
     }
   ],
   "tables": [
-    [
-      "Stage1_Table_VIP_Scores.csv",
-      "COPIED",
-      "1296 B"
-    ],
     [
       "Stage2_Results_Summary.txt",
       "COPIED",
@@ -276,31 +263,6 @@
       "472991 B"
     ],
     [
-      "Stage1_Figure_PCA.pdf",
-      "COPIED",
-      "8249 B"
-    ],
-    [
-      "Stage1_Figure_PLSDA_Permutation.pdf",
-      "COPIED",
-      "34715 B"
-    ],
-    [
-      "Stage1_Figure_PLSDA_Score.pdf",
-      "COPIED",
-      "8302 B"
-    ],
-    [
-      "Stage1_Figure_Univariate_Boxplots.pdf",
-      "COPIED",
-      "97922 B"
-    ],
-    [
-      "Stage1_Figure_VIP_Lollipop.pdf",
-      "COPIED",
-      "6226 B"
-    ],
-    [
       "Fig_S3_LeaveOneOut_Raw_Nature.pdf",
       "COPIED",
       "14941 B"
@@ -381,31 +343,6 @@
       "/Users/bing/MS/bmj"
     ],
     [
-      "Stage1_Figure_PCA.pdf",
-      "dup-of:Stage1_Figure_PCA.pdf",
-      "/Users/bing/MS/bmj"
-    ],
-    [
-      "Stage1_Figure_PLSDA_Permutation.pdf",
-      "dup-of:Stage1_Figure_PLSDA_Permutation.pdf",
-      "/Users/bing/MS/bmj"
-    ],
-    [
-      "Stage1_Figure_PLSDA_Score.pdf",
-      "dup-of:Stage1_Figure_PLSDA_Score.pdf",
-      "/Users/bing/MS/bmj"
-    ],
-    [
-      "Stage1_Figure_Univariate_Boxplots.pdf",
-      "dup-of:Stage1_Figure_Univariate_Boxplots.pdf",
-      "/Users/bing/MS/bmj"
-    ],
-    [
-      "Stage1_Figure_VIP_Lollipop.pdf",
-      "dup-of:Stage1_Figure_VIP_Lollipop.pdf",
-      "/Users/bing/MS/bmj"
-    ],
-    [
       "Supplementary_Figures.pdf",
       "COPIED",
       "876521 B"
@@ -413,7 +350,7 @@
     [
       "bmjdocument.pdf",
       "COPIED",
-      "1111076 B"
+      "944987 B"
     ]
   ]
 }

@@ -61,24 +61,24 @@ remotes::install_github("rondolab/MR-PRESSO")   # MR-PRESSO 水平多效性
 
 ```text
 code/01_stage1_nhanes.R                NHANES 主队列：拉数 → 握力/DXA 队列 → 回归 → 图 → 汇总
-      │                                （⛔ 该脚本的回归为**未加权 lm**；加权正确路线见 06）
+      │                                （⛔ 该脚本的回归为**未加权 lm**；加权正确路线见 05）
 code/02_stage2_mr.R                    阶段二：两样本 MR + MVMR（旧结局 ieu-b-39）
-code/04_stage3_mr_ukb_grip.R           阶段二（主用）：结局换 ukb-b-10215，从零生成图表
+code/03_stage2_mr_ukb_grip.R           阶段二（主用）：结局换 ukb-b-10215，从零生成图表
       │
-      ├─ code/05_supplementary_analyses.R  补充分析合集：加权回归 / MR-PRESSO / 条件 F
-      ├─ code/06_stage2_nhanes_weighted_FIXED.R  ⭐阶段一**加权修正版**（svydesign + svyglm，取代 01 的未加权）
-      ├─ code/07_power_analysis.R           MR 功效分析（把「未发现」升级为「可排除」）
-      ├─ code/08_mr_presso_bidirectional.R  MR-PRESSO 双向（NbDistribution=10000）
-      ├─ code/09_abs_grip_bmi_weighted.R    绝对握力+BMI 加权回归（带诊断）
-      └─ code/10_wtsaf2yr_sensitivity.R     空腹子样本权重（WTSAF2YR）敏感性分析
-         code/11_wtsaf2yr_sensitivity_trueN.R 同上，N 用 nobs(fit) 的**权威版**
+      ├─ code/04_supplementary_analyses.R  补充分析合集：加权回归 / MR-PRESSO / 条件 F
+      ├─ code/05_stage1_nhanes_weighted_FIXED.R  ⭐阶段一**加权修正版**（svydesign + svyglm，取代 01 的未加权）
+      ├─ code/06_power_analysis.R           MR 功效分析（把「未发现」升级为「可排除」）
+      ├─ code/07_mr_presso_bidirectional.R  MR-PRESSO 双向（NbDistribution=10000）
+      ├─ code/08_abs_grip_bmi_weighted.R    绝对握力+BMI 加权回归（带诊断）
+      └─ code/09_wtsaf2yr_sensitivity.R     空腹子样本权重（WTSAF2YR）敏感性分析
+         code/10_wtsaf2yr_sensitivity_trueN.R 同上，N 用 nobs(fit) 的**权威版**
 ```
 
-> ⚠️ `04`、`06` 的文件名保留历史编号（`stage3` / `stage2`），与本节的两阶段编号不对应；重命名后仅主脚本 `01_stage1_nhanes.R`、`02_stage2_mr.R` 与两阶段编号一致。
+> 编号已统一为两阶段体系：`01`–`10` 连续；文件名中的 `stage1` = NHANES 人群层、`stage2` = MR 因果层。
 
 ### ⚠️ 4.1 运行前**必须**修改的硬编码路径
 
-所有脚本都以绝对路径写死工作目录，**共 19 处、分布于 9 个脚本**（`01/02/04/06/07/08/09/10/11`；`05` 无绝对路径）。其中 `01_stage1_nhanes.R` 同时出现 `/Users/bing/MSM`（L11）与 `/Users/bing/MS`（L349）。请统一改成你本地的仓库根：
+所有脚本都以绝对路径写死工作目录，**共 19 处、分布于 9 个脚本**（`01/02/03/05/06/07/08/09/10`；`04` 无绝对路径）。其中 `01_stage1_nhanes.R` 同时出现 `/Users/bing/MSM`（L11）与 `/Users/bing/MS`（L349）。请统一改成你本地的仓库根：
 
 ```bash
 # macOS / Linux
@@ -92,7 +92,7 @@ sed -i    's#/Users/bing/MSM*#/你的/仓库/路径#g'  code/*.R      # GNU sed
 
 | 项 | 说明 |
 |---|---|
-| `set.seed(2026)` | `04`、`06`、`08` 已固定；**置换检验与 MR-PRESSO 的末位数字仍可能随 R/包版本抖动**（`08` 的 MR-PRESSO 用 `NbDistribution = 10000`，重复运行 outlier 集合可能略有差异） |
+| `set.seed(2026)` | `03`、`05`、`07` 已固定；**置换检验与 MR-PRESSO 的末位数字仍可能随 R/包版本抖动**（`07` 的 MR-PRESSO 用 `NbDistribution = 10000`，重复运行 outlier 集合可能略有差异） |
 | NHANES 下载 | 脚本每次运行都会从 NHANES 官网**重新下载**当前存档文件；NHANES 会发布修订版，样本量可能在极小量级上漂移 |
 | OpenGWAS | GWAS 汇总统计为**版本化数据集**（`ieu-b-*` / `ukb-b-*` 固定 ID），但服务端偶有元数据修订 |
 
@@ -100,17 +100,17 @@ sed -i    's#/Users/bing/MSM*#/你的/仓库/路径#g'  code/*.R      # GNU sed
 
 | # | 口径 | 正确用法 |
 |---|---|---|
-| 1 | **加权 vs 未加权**（阶段一） | 正式结论一律用 **加权**（`svyglm`，`06`/`09`/`10`/`11`）。`01` 的 `lm` 版本为早期版本，其绝对握力+BMI 估计（β≈−0.108，P=0.6995）**已作废**，加权真值为 **β=0.3679, P=0.400** |
-| 2 | **DXA 队列 2 周期 vs 4 周期** | 权威口径 = **四周期 G/H/I/J，n=4,644**（`01` 早期仅取 G/H → 掉到 2,508；`06` 已补齐权重） |
+| 1 | **加权 vs 未加权**（阶段一） | 正式结论一律用 **加权**（`svyglm`，`05`/`08`/`09`/`10`）。`01` 的 `lm` 版本为早期版本，其绝对握力+BMI 估计（β≈−0.108，P=0.6995）**已作废**，加权真值为 **β=0.3679, P=0.400** |
+| 2 | **DXA 队列 2 周期 vs 4 周期** | 权威口径 = **四周期 G/H/I/J，n=4,644**（`01` 早期仅取 G/H → 掉到 2,508；`05` 已补齐权重） |
 | 3 | **正向 MR 的结局 GWAS** | 主用 **`ukb-b-10215`**（握力）。`02` 使用的旧结局 **`ieu-b-39` 已废弃**，不要引用其数字 |
 | 4 | **正向 MR 工具集** | 主分析 **112 SNP**（`Table_S1`）；清洗后 **23 SNP**（`Table_S7`）；MVMR 联合集 **438 SNP**（`Table_S3`）。三者**不是同一集合**，勿混算 |
-| 5 | **MR-PRESSO 工具集** | `08` 实跑为**全工具集（280 SNP）**；与主分析 112 SNP 不同集，稿件中已声明为敏感性分析 |
+| 5 | **MR-PRESSO 工具集** | `07` 实跑为**全工具集（280 SNP）**；与主分析 112 SNP 不同集，稿件中已声明为敏感性分析 |
 
 ---
 
 ## 5. 凭证设置（IEU OpenGWAS）
 
-阶段二需要 OpenGWAS token。脚本中**显式**读取环境变量 `OPENGWAS_JWT` 的是 `code/08_mr_presso_bidirectional.R`；`code/02`、`04` 通过 `ieugwasr` / `TwoSampleMR` 使用同一环境变量。
+阶段二需要 OpenGWAS token。脚本中**显式**读取环境变量 `OPENGWAS_JWT` 的是 `code/07_mr_presso_bidirectional.R`；`code/02`、`03` 通过 `ieugwasr` / `TwoSampleMR` 使用同一环境变量。
 
 ```r
 # 步骤 1：注册并生成 token
@@ -173,12 +173,9 @@ Analysis outputs (tables and figures) are available in the manuscript's suppleme
 | MVMR 清洗后（8 SNP） | P = 0.345 —— 阴性 | `Table_S8` |
 | 绝对握力 + BMI（加权） | P = 0.400 —— 加 BMI 后不再显著 | `Table_S4` |
 
-> ⚠️ **Steiger 方向性检验**：本仓库用 TwoSampleMR 0.6.24 对三套数据集（112 / 167 / 23 SNP）实跑，得到 P = 0 / 9.88e−324 / 5.12e−162（复算产物未随附）。差异源于结局侧输入口径不同 —— 该数字的原始运行环境未归档，**引用前请自行复算**。
-
 **已知的不可完全复现项**（诚实披露）：
 
-1. **Steiger 方向性检验数**（见上）——本仓库仅提供三套数据集的重算值。
-2. **`08` MR-PRESSO** 的离群 SNP 集合对 `NbDistribution` 敏感，重复运行可能有 ±1 个 SNP 的抖动。
+1. **`07` MR-PRESSO** 的离群 SNP 集合对 `NbDistribution` 敏感，重复运行可能有 ±1 个 SNP 的抖动。
 
 ---
 
@@ -221,7 +218,7 @@ triglyceride-muscle-MR/
 ├── README.md
 ├── LICENSE                 (MIT)
 ├── .gitignore
-├── code/                   (9 个 R 脚本；01→11 见 §4，缺 03)
+├── code/                   (10 个 R 脚本；01→10 见 §4，两阶段连续编号)
 ├── data/
 │   ├── phenoscanner_sig_confounders_filtered.csv
 │   └── derived/            (2 个小体积中间对象)

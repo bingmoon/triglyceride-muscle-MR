@@ -14,18 +14,19 @@
 
 | 本仓库文件 | 源 md 块 | 源 md 行范围 | 正文行数 | 正文字节 | 正文 md5（不含本工具添加的 3 行头注释）|
 |---|---|---|---|---|---|
-| `code/01_stage1_metabolomics.R` | 1 | `L30-280` | 249 | 9531 | `cbd3820621894d235fbef2a3ef7466be` |
-| `code/02_stage2_nhanes.R` | 2 | `L283-724` | 440 | 18996 | `a0d5e255a764533d43924eb4e67df30b` |
-| `code/03_stage3_mr.R` | 3 | `L726-1279` | 552 | 19852 | `f639b74280b49017cc8482f286fa8a02` |
-| `code/04_stage3_mr_ukb_grip.R` | 4 | `L1282-1557` | 274 | 12152 | `4b91075e6aa8b360fbe0be1949c7dcb6` |
-| `code/05_supplementary_analyses.R` | 5 | `L1559-1655` | 95 | 3955 | `5397d7e07d29e8b3d2eed6361becd4af` |
-| `code/06_stage2_nhanes_weighted_FIXED.R` | 6 | `L1665-1768` | 102 | 5143 | `acbfe5ea8f07d443dde657cd21b296ec` |
-| `code/07_power_analysis.R` | 7 | `L1772-1842` | 69 | 3306 | `191d382e680bd67f083eec45e29e4cb7` |
-| `code/08_mr_presso_bidirectional.R` | 8 | `L1846-1949` | 102 | 4618 | `28e25760139af53ac59f4ba3a9d28c37` |
-| `code/09_abs_grip_bmi_weighted.R` | 9 | `L1967-2146` | 178 | 6110 | `8cf2f6253500a195a01d7511a20a82cc` |
-| `code/10_wtsaf2yr_sensitivity.R` | 10 | `L2170-2303` | 132 | 5418 | `045a06985014fa38b61c94d45f183a96` |
-| `code/11_wtsaf2yr_sensitivity_trueN.R` | standalone | `/Users/bing/MS/results/WTSAF2YR_sensitivity_trueN.R (verbatim copy)` | 136 | 5593 | `a591abe2ee04cbab3af5b6b04ab0bc6c` |
+| `code/01_stage1_nhanes.R` | 2 | `L283-724` | 440 | 18996 | `a0d5e255a764533d43924eb4e67df30b` |
+| `code/02_stage2_mr.R` | 3 | `L726-1279` | 552 | 19852 | `f639b74280b49017cc8482f286fa8a02` |
+| `code/03_stage2_mr_ukb_grip.R` | 4 | `L1282-1557` | 274 | 12152 | `4b91075e6aa8b360fbe0be1949c7dcb6` |
+| `code/04_supplementary_analyses.R` | 5 | `L1559-1655` | 95 | 3955 | `5397d7e07d29e8b3d2eed6361becd4af` |
+| `code/05_stage1_nhanes_weighted_FIXED.R` | 6 | `L1665-1768` | 102 | 5143 | `acbfe5ea8f07d443dde657cd21b296ec` |
+| `code/06_power_analysis.R` | 7 | `L1772-1842` | 69 | 3306 | `191d382e680bd67f083eec45e29e4cb7` |
+| `code/07_mr_presso_bidirectional.R` | 8 | `L1846-1949` | 102 | 4618 | `28e25760139af53ac59f4ba3a9d28c37` |
+| `code/08_abs_grip_bmi_weighted.R` | 9 | `L1967-2146` | 178 | 6110 | `8cf2f6253500a195a01d7511a20a82cc` |
+| `code/09_wtsaf2yr_sensitivity.R` | 10 | `L2170-2303` | 132 | 5418 | `045a06985014fa38b61c94d45f183a96` |
+| `code/10_wtsaf2yr_sensitivity_trueN.R` | standalone | `/Users/bing/MS/results/WTSAF2YR_sensitivity_trueN.R (verbatim copy)` | 136 | 5593 | `a591abe2ee04cbab3af5b6b04ab0bc6c` |
 
+> 源 md **块 1**（前临床代谢组学阶段）已随「三阶段 → 两阶段」重构移出本仓库；**块号保持原编号**，故现存块号为 2–10（连续但非从 1 起）。
+>
 > 每个 `.R` 文件开头的 3 行 `# ---` 注释由归档工具添加（含来源块与正文 md5），**代码正文逐字未改**。
 
 ## 表格来源
@@ -34,7 +35,6 @@
 
 | 仓库内文件名 | 处置 | 详情 |
 |---|---|---|
-| `Stage1_Table_VIP_Scores.csv` | COPIED | 1296 B |
 | `Stage2_Results_Summary.txt` | COPIED | 2277 B |
 | `Table_2.8_Adult_DXA_Regression.csv` | COPIED | 945 B |
 | `Table_2.9_Adult_Grip_Regression.csv` | COPIED | 675 B |
@@ -75,11 +75,6 @@
 | `Figure_2.9_Regression_ForestPlot.pdf` | COPIED | 5263 B |
 | `Figure_S1_Absolute_Grip.pdf` | COPIED | 243803 B |
 | `Figure_S2_BMI_Paradox_Source.pdf` | COPIED | 472991 B |
-| `Stage1_Figure_PCA.pdf` | COPIED | 8249 B |
-| `Stage1_Figure_PLSDA_Permutation.pdf` | COPIED | 34715 B |
-| `Stage1_Figure_PLSDA_Score.pdf` | COPIED | 8302 B |
-| `Stage1_Figure_Univariate_Boxplots.pdf` | COPIED | 97922 B |
-| `Stage1_Figure_VIP_Lollipop.pdf` | COPIED | 6226 B |
 | `Fig_S3_LeaveOneOut_Raw_Nature.pdf` | COPIED | 14941 B |
 | `Fig_S4_Scatter_Clean_Nature.pdf` | COPIED | 7343 B |
 | `Fig_S5_Forest_Clean_Nature.pdf` | COPIED | 7700 B |
@@ -96,13 +91,8 @@
 | `Figure_2.9_Regression_ForestPlot.pdf` | dup-of:Figure_2.9_Regression_ForestPlot.pdf | /Users/bing/MS/bmj |
 | `Figure_S1_Absolute_Grip.pdf` | dup-of:Figure_S1_Absolute_Grip.pdf | /Users/bing/MS/bmj |
 | `Figure_S2_BMI_Paradox_Source.pdf` | dup-of:Figure_S2_BMI_Paradox_Source.pdf | /Users/bing/MS/bmj |
-| `Stage1_Figure_PCA.pdf` | dup-of:Stage1_Figure_PCA.pdf | /Users/bing/MS/bmj |
-| `Stage1_Figure_PLSDA_Permutation.pdf` | dup-of:Stage1_Figure_PLSDA_Permutation.pdf | /Users/bing/MS/bmj |
-| `Stage1_Figure_PLSDA_Score.pdf` | dup-of:Stage1_Figure_PLSDA_Score.pdf | /Users/bing/MS/bmj |
-| `Stage1_Figure_Univariate_Boxplots.pdf` | dup-of:Stage1_Figure_Univariate_Boxplots.pdf | /Users/bing/MS/bmj |
-| `Stage1_Figure_VIP_Lollipop.pdf` | dup-of:Stage1_Figure_VIP_Lollipop.pdf | /Users/bing/MS/bmj |
 | `Supplementary_Figures.pdf` | COPIED | 876521 B |
-| `bmjdocument.pdf` | COPIED | 1111076 B |
+| `bmjdocument.pdf` | COPIED | 944987 B |
 
 ## 未纳入本仓库的内容（刻意排除）
 
