@@ -181,6 +181,7 @@ Analysis outputs (tables and figures) are available in the manuscript's suppleme
 1. **`07` MR-PRESSO** 的离群 SNP 集合对 `NbDistribution` 敏感，重复运行可能有 ±1 个 SNP 的抖动。
 2. **硬编码绝对路径（known limitation）**：脚本以原作者机器路径写死工作目录（共 19 处、分布于 9 个脚本，详见 §4.1）。**本仓库不保证「开箱即跑（out-of-the-box reproduction）」**——运行前必须先按 §4.1 替换路径，否则脚本会在拉数/写盘阶段失败。
 3. **补充材料文件名沿用旧三阶段命名**：如 `Stage2_Results_Summary.txt`（旧 Stage 2 = 现 `stage1` NHANES 层）。文件内容与正文两阶段体系一致，仅文件名未改（遵守「不改补充材料」约束）。
+4. **Table 1 的两项描述统计无法由随附派生数据复现**（2026-09 复核）：握力队列 BMI SD 稿件报 **6.8**，`data/derived/NHANES_Adult_Grip_Main.rds` 复算为 **6.97**（未加权）/ **6.92**（加权）；DXA 队列 TG IQR 稿件报 **63–138**，`NHANES_Adult_DXA_All.rds` 复算为 **62–139**（未加权）/ **63–139**（加权）。两项在未加权与加权两种口径下**均不可复现**，且随附 rds 与作者本地镜像（`M/1.RDate`）逐字节一致（`identical() = TRUE`），故**非 NHANES 数据集版本漂移所致**。其余 Table 1 数字（N、年龄、女性 n%、握力 TG 98 (68–144)、DXA BMI 28.7 (6.9)）均可逐字复现。稿件按作者裁定**保留原值**，并在 Table 1 表注声明数据来源版本；补充材料 S1–S12 与图件均未改动。
 
 ---
 
